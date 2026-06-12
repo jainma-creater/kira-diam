@@ -115,6 +115,9 @@ export default function ThreeDViewer({
         console.warn('Failed to load GLB model, using fallback geometry', error);
         // Fallback: create a solitaire engagement ring matching reference image
         
+        // Create group to hold fallback geometry
+        model = new THREE.Group();
+        
         // Create band - larger torus for proper ring size
         const bandRadius = 3.5;
         const bandThickness = 0.35;
@@ -125,8 +128,9 @@ export default function ThreeDViewer({
           emissive: 0x9B7D1F,
           side: THREE.DoubleSide,
         });
-        model = new THREE.Mesh(ringGeometry, ringMaterial);
-        model.rotation.x = Math.PI * 0.15; // Tilt slightly to show diamond
+        const ringMesh = new THREE.Mesh(ringGeometry, ringMaterial);
+        ringMesh.rotation.x = Math.PI * 0.15; // Tilt slightly to show diamond
+        model.add(ringMesh);
         scene.add(model);
 
         // Add large solitaire diamond - much bigger to match reference

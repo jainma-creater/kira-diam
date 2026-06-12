@@ -1,0 +1,10 @@
+version: 1.0
+metadata:
+  template: static-nextjs-app@0.0.1
+name: kira-diam
+services:
+  web:
+    project: ./
+    host: staticwebapp
+    language: nodejs
+    module: web

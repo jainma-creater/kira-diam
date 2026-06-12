@@ -1,0 +1,25 @@
+{
+  "routes": [
+    {
+      "route": "/*",
+      "serve": "/index.html",
+      "statusCode": 200
+    }
+  ],
+  "navigationFallback": {
+    "rewrite": "/index.html",
+    "exclude": ["/images/*", "/css/*", "/js/*", "*.json", "/public/*"]
+  },
+  "mimeTypes": {
+    ".json": "text/json",
+    ".wasm": "application/wasm"
+  },
+  "auth": {
+    "rolesSource": "/auth/me",
+    "identityProviders": {
+      "azureActiveDirectory": {
+        "userDetailsClaim": "oid"
+      }
+    }
+  }
+}

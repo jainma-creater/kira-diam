@@ -88,8 +88,8 @@ export default function ThreeDViewer({
             // Enhance existing materials without changing colors
             if (child.material instanceof THREE.Material) {
               child.material.side = THREE.DoubleSide;
-              if (child.material instanceof THREE.MeshPhongMaterial || 
-                  child.material instanceof THREE.MeshStandardMaterial) {
+              // Only set metalness and roughness on MeshStandardMaterial
+              if (child.material instanceof THREE.MeshStandardMaterial) {
                 child.material.metalness = 0.8;
                 child.material.roughness = 0.2;
               }
